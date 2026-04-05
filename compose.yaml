@@ -1,0 +1,27 @@
+services:
+  nova_dev:
+    build:
+      context: .
+      args:
+        USER_ID: ${UID}
+        GROUP_ID: ${GID}
+    image: nova_devkit:latest
+    container_name: nova_devkit
+    user: "${UID}:${GID}"
+    network_mode: "host"
+    ipc: "host"
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./src:/home/ros2_ws/src:rw  # Edit locally, runs globally
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
