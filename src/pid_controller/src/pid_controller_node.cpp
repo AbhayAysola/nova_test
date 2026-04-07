@@ -14,7 +14,7 @@ public:
         this->declare_parameter("kd_v", 0.0);
         this->declare_parameter("kp_s", 0.8);
         this->declare_parameter("kd_s", 0.0);
-        this->declare_parameter("throttle_smooth", 1.0); // Low-pass filter (0.1 to 1.0)
+        this->declare_parameter("throttle_smooth", 0.15); // Low-pass filter (0.1 to 1.0)
 
         // Subscribers
         ackermann_sub_ = this->create_subscription<ackermann_msgs::msg::AckermannDrive>(
