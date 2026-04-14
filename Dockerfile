@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     ros-humble-ackermann-msgs \
     ros-humble-rqt-gui \
     ros-humble-rqt-common-plugins \
+    ros-humble-cartographer \
+    ros-humble-cartographer-ros \
     tmux \
     && rm -rf /var/lib/apt/lists/*
 
