@@ -4,14 +4,9 @@ Since you're daily driving Arch and using Neovim, you want a README that is tech
 
 # 🏁 Project Nova: F1TENTH / ICRA 2026 Devkit
 
-**Nova** is a high-performance autonomous racing environment built for the 2026 ICRA competition. It uses a custom-layered Docker architecture to bridge an **Arch Linux host** (Neovim/Development) with a **ROS 2 Humble container** (Simulation/Execution).
-
 ## 🏗 Architecture
-- **Host:** Arch Linux (UID 1000) + Neovim
 - **Container:** Ubuntu 22.04 + ROS 2 Humble + CUDA 12.x
 - **Sync:** Bidirectional volume mount on `./src` with UID/GID mapping to prevent `Permission denied` errors.
-
-
 
 ---
 
@@ -44,8 +39,23 @@ Jump into the container to run ROS 2 commands:
 ```bash
 docker exec -it nova_devkit bash
 ```
-
 ---
+
+## Running the algorithm
+Run `tmux`
+run the different nodes
+```bash
+ros2 launch autodrive_devkit bringup_headless.py
+ros2 run pid_controller pid_controller_node
+ros2 run nova_ftg ftg_node
+```
+now for mapping,
+```bash
+ros2 run nova_cartographer cartographer.launch.py
+rviz2 # in another terminal and add the map by topic display to view the map
+```
+once you think the map is done, you can run the finish_map script in ./scripts.
+the map should be in ./maps/
 
 ## 💻 Development Workflow
 
