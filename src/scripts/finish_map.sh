@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# 1. Finish the trajectory
-echo "Finishing trajectory..."
-ros2 service call /finish_trajectory cartographer_ros_msgs/srv/FinishTrajectory "{trajectory_id: 0}"
-
+# # 1. Finish the trajectory
+# echo "Finishing trajectory..."
+# ros2 service call /finish_trajectory cartographer_ros_msgs/srv/FinishTrajectory "{trajectory_id: 0}"
+#
 # 2. Get the name
 echo "Please enter a map name: "
 read map_name
