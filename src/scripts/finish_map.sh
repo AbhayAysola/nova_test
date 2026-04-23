@@ -18,10 +18,10 @@ echo "Saving map to $MAP_DIR/$map_name.pbstream"
 ros2 service call /write_state cartographer_ros_msgs/srv/WriteState "{filename: '$MAP_DIR/$map_name.pbstream', include_unfinished_submaps: true}"
 
 # 5. Wait a second for the filesystem to catch up
-# sleep 2
+sleep 2
 
 # 6. Convert to ROS Map
-# ros2 run cartographer_ros cartographer_pbstream_to_ros_map \
-#   -pbstream_filename "$MAP_DIR/$map_name.pbstream" \
-#   -map_filestem "$MAP_DIR/$map_name" \
-#   -resolution 0.05
+ros2 run cartographer_ros cartographer_pbstream_to_ros_map \
+  -pbstream_filename "$MAP_DIR/$map_name.pbstream" \
+  -map_filestem "$MAP_DIR/$map_name" \
+  -resolution 0.05
