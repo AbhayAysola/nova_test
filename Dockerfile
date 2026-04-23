@@ -1,4 +1,4 @@
-FROM autodriveecosystem/autodrive_roboracer_api:2025-icra-practice
+FROM autodriveecosystem/autodrive_roboracer_api:2026-icra-practice
 
 # 1. Stay as root for installations
 USER root
