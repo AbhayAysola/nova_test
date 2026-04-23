@@ -13,6 +13,12 @@ RUN groupadd -g $GROUP_ID novauser && \
     echo "novauser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # 4. Install your Nova dependencies (still as root)
+ARG CACHE_BUST=1
+RUN rm -f /etc/apt/sources.list.d/ros2.list /etc/apt/sources.list.d/ros2-latest.list
+RUN apt-get update && apt-get install -y curl gnupg2 lsb-release
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list
+
 RUN apt-get update && apt-get install -y \
     ros-humble-ackermann-msgs \
     ros-humble-rqt-gui \
