@@ -18,6 +18,29 @@ RUN apt-get update && apt-get install -y \
     ros-humble-rqt-common-plugins \
     ros-humble-cartographer \
     ros-humble-cartographer-ros \
+    wget \
+    jq x11-apps \
+    python3-pip \
+    python3-colcon-clean \
+    apt-utils \
+    net-tools \
+    joystick \
+    ros-humble-asio-cmake-module \
+    ros-humble-diagnostic-updater \
+    ros-humble-robot-localization \
+    ros-humble-tf-transformations \
+    ros-humble-cartographer-ros \
+    ros-humble-urg-node \
+    ros-humble-ackermann-msgs \
+    ros-humble-control-msgs \
+    ros-humble-rosbridge-server \
+    ros-humble-serial-driver \
+    ros-humble-test-msgs \
+    ros-humble-rqt \
+    ros-humble-xacro \
+    ros-humble-nav2-map-server \
+    ros-humble-nav2-lifecycle-manager \
+    ros-humble-rmw-zenoh-cpp \
     tmux \
     && rm -rf /var/lib/apt/lists/*
 
@@ -41,3 +64,8 @@ RUN echo "source /home/autodrive_devkit/install/setup.bash" >> ~/.bashrc
 
 # Source your own Nova workspace
 RUN echo "source /home/ros2_ws/install/setup.bash" >> ~/.bashrc
+
+WORKDIR /home/novauser
+RUN mkdir -p /home/novauser/ws/src
+RUN git clone https://github.com/AbhayAysola/race_stack -b ros2-humble --recurse-submodules ./ws/src/race_stack
+RUN /bin/bash /home/novauser/ws/src/race_stack/.install_utils/post_create_command.sh
