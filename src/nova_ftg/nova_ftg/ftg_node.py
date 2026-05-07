@@ -7,7 +7,7 @@ from ackermann_msgs.msg import AckermannDrive
 class GapFollower(Node):
     def __init__(self):
         super().__init__('gap_follower_node')
-        self.ftg = FTG_Controller(mapping=False, debug=True, safety_radius=5, max_lidar_dist=10, max_speed=20, range_offset=270, track_width=4)
+        self.ftg = FTG_Controller(mapping=False, debug=True, safety_radius=5, max_lidar_dist=10, max_speed=5, range_offset=270, track_width=4)
         
         # Subscriber to the LiDAR topic
         self.lidar_sub = self.create_subscription(
