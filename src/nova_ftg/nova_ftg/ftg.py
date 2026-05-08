@@ -94,7 +94,6 @@ class FTG_Controller(Node):
         
         """
         steering_angle = math.atan2(point_y, point_x)
-        print(steering_angle)
         return steering_angle
         # return np.clip(steering_angle, -0.4, 0.4)
 

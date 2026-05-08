@@ -71,7 +71,6 @@ private:
         // Calculate linear velocity from angular wheel velocities: v = omega * r
         // Averaging left and right for the center-line velocity
         float current_vel = ((left_val_.current_vel * r) + (right_val_.current_vel * r)) / 2.0f;
-        std::cout << current_vel << '\n';
 
         // Fetch PID parameters
         double kp_v = this->get_parameter("kp_v").as_double();
