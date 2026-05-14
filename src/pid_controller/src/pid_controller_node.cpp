@@ -19,8 +19,8 @@ public:
 
     DualPIDController() : Node("dual_pid_controller") {
         // --- ROS 2 PARAMETERS ---
-        this->declare_parameter("kp_v", 0.04);
-        this->declare_parameter("ki_v", 0.02);
+        this->declare_parameter("kp_v", 0.02);
+        this->declare_parameter("ki_v", 0.04);
         this->declare_parameter("kd_v", 0.0);
         this->declare_parameter("kp_s", 0.8);
         this->declare_parameter("kd_s", 0.0);
