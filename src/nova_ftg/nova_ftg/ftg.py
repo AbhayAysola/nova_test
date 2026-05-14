@@ -41,8 +41,8 @@ class FTG_Controller(Node):
         
         # Speed params
         scale = 0.6  # .575 is  max
-        self.CORNERS_SPEED = 0.3 * self.MAX_SPEED * scale
-        self.MILD_CORNERS_SPEED = 0.45 * self.MAX_SPEED * scale
+        self.CORNERS_SPEED = 0.6 * self.MAX_SPEED * scale
+        self.MILD_CORNERS_SPEED = 0.6 * self.MAX_SPEED * scale
         self.STRAIGHTS_SPEED = 0.8 * self.MAX_SPEED * scale
         self.ULTRASTRAIGHTS_SPEED = self.MAX_SPEED * scale
         
@@ -115,6 +115,14 @@ class FTG_Controller(Node):
         gap_left += self.range_offset - 180
         gap_right += self.range_offset - 180
         gap_middle = int((gap_right + gap_left) / 2)
+        if (gap_left < 100 and gap_right > 400):
+            if (proc_ranges[0] > 2.1 and proc_ranges[-1] < 2.4):
+                print("hello left")
+                gap_middle -= 900
+
+        if (gap_left < 150 and gap_right > 150 and proc_ranges[-1] > 1.5):
+            print("hello right" gap_middle)
+            gap_middle 1975
         #Calculate cartesian point of the best point position from the lidar measurements in laser frame
         best_y = np.cos(gap_middle * self.radians_per_elem) * radius
         best_x = np.sin(gap_middle * self.radians_per_elem) * radius
