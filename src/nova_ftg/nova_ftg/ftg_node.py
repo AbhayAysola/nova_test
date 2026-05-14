@@ -7,6 +7,11 @@ from ackermann_msgs.msg import AckermannDrive
 class GapFollower(Node):
     def __init__(self):
         super().__init__('gap_follower_node')
+        self.declare_parameter('safety_radius', 5)
+        self.declare_parameter('max_lidar_dist', 10)
+        self.declare_parameter('max_speed', 5)
+        self.declare_parameter('range_offset', 270)
+        self.declare_parameter('track_width', 4)
         self.ftg = FTG_Controller(mapping=False, debug=True, safety_radius=5, max_lidar_dist=10, max_speed=5, range_offset=270, track_width=4)
         
         # Subscriber to the LiDAR topic
