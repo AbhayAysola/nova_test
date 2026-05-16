@@ -117,11 +117,9 @@ class FTG_Controller(Node):
         gap_middle = int((gap_right + gap_left) / 2)
         if (gap_left < 100 and gap_right > 400):
             if (proc_ranges[0] > 2.1 and proc_ranges[-1] < 2.4):
-                print("hello left")
                 gap_middle -= 900
 
         if (gap_left < 150 and gap_right > 150 and proc_ranges[-1] > 1.5):
-            print("hello right", gap_middle)
             gap_middle = 1975
         #Calculate cartesian point of the best point position from the lidar measurements in laser frame
         best_y = np.cos(gap_middle * self.radians_per_elem) * radius
